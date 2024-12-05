@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  repository_dispatch:
   workflow_dispatch:
 
 jobs:
@@ -12,14 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Navigate to repo
-        run: cd $GITHUB_WORKSPACE
       - name: Install Dependencies
         run: npm install
       - name: Install cheerio
-        run: npm install --save npm install cheerio
+        run: npm install cheerio
       - name: Install crypto-js
-        run: npm install --save npm install crypto-js
+        run: npm install crypto-js
       - name: Build & Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:
